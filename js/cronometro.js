@@ -1,11 +1,11 @@
-const btnIniciar = document.getElementById('btnIniciar');
-const btnParar = document.getElementById('btnParar');
-const btnLimpar = document.getElementById('btnLimpar');
-const btnMarcar = document.getElementById('btnMarcar');
-const listaMarcas = document.getElementById('marcas');
-const txtsegundos = document.getElementById('segundos');
-const txtminutos = document.getElementById('minutos');
-const txthoras = document.getElementById('horas');
+const btnIniciar = document.getElementById("btnIniciar");
+const btnParar = document.getElementById("btnParar");
+const btnLimpar = document.getElementById("btnLimpar");
+const btnMarcar = document.getElementById("btnMarcar");
+const listaMarcas = document.getElementById("marcas");
+const txtsegundos = document.getElementById("segundos");
+const txtminutos = document.getElementById("minutos");
+const txthoras = document.getElementById("horas");
 
 let segundos = 0;
 let minutos = 0;
@@ -13,11 +13,9 @@ let horas = 0;
 let tempoPadraoIntervalo = 1000;
 let cronometroRodando;
 
-
 ativaDesativaBotao(btnParar,true);
 ativaDesativaBotao(btnLimpar,true);
 ativaDesativaBotao(btnMarcar,true);
-
 
 btnIniciar.addEventListener("click" , ()=>{
     iniciarCronometro();
@@ -25,22 +23,19 @@ btnIniciar.addEventListener("click" , ()=>{
     ativaDesativaBotao(btnIniciar,true);
     ativaDesativaBotao(btnParar,false);
     ativaDesativaBotao(btnLimpar,false);
-    ativaDesativaBotao(btnMarcar,false);
-    
-    
+    ativaDesativaBotao(btnMarcar,false);  
 })
 btnParar.addEventListener("click" , ()=>{
     pararCronometro(cronometroRodando);
     
-    ativaDesativaBotao(btnParar,true)
-    ativaDesativaBotao(btnIniciar,false)
-    
+    ativaDesativaBotao(btnParar,true);
+    ativaDesativaBotao(btnIniciar,false); 
 })
 
 btnLimpar.addEventListener("click", ()=>{
-    limparCronometro(cronometroRodando)
+    limparCronometro(cronometroRodando);
 
-    ativaDesativaBotao(btnIniciar,false)
+    ativaDesativaBotao(btnIniciar,false);
     ativaDesativaBotao(btnParar,true);
     ativaDesativaBotao(btnLimpar,true);
     ativaDesativaBotao(btnMarcar,true);
@@ -49,18 +44,18 @@ btnLimpar.addEventListener("click", ()=>{
 btnMarcar.addEventListener("click" , marcarTempo);
 
 function limparCronometro(setInterval){
-    clearInterval(setInterval)
+    clearInterval(setInterval);
     segundos = 0;
     minutos = 0;
     horas = 0;
-    listaMarcas.innerHTML = ""
-    exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas))
-    exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos))
-    exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos))
+    listaMarcas.innerHTML = "";
+    exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas));
+    exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos));
+    exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos));
 }
 
 function marcarTempo(){
-    listaMarcas.innerHTML += `<li>${formatarDoisCaracteres(horas)}:${formatarDoisCaracteres(minutos)}:${formatarDoisCaracteres(segundos)}</li>`
+    listaMarcas.innerHTML += `<li>${formatarDoisCaracteres(horas)}:${formatarDoisCaracteres(minutos)}:${formatarDoisCaracteres(segundos)}</li>`;
 }
 
 function iniciarCronometro(){
@@ -68,16 +63,16 @@ function iniciarCronometro(){
         if(segundos == 59){
             segundos = 0;
             minutos++
-            exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos))
-            return ;
+            exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos));
+            return;
         }
-        segundos++
-        exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos))
+        segundos++;
+        exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos));
         
         if(minutos == 59){
             minutos = 0;
-            horas++
-            exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas))
+            horas++;
+            exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas));
             return;
         }
     }, tempoPadraoIntervalo);  
@@ -86,15 +81,15 @@ function iniciarCronometro(){
 function ativaDesativaBotao(botao,estado){
     botao.disabled = estado;
     if(estado){
-        botao.classList.add('desativado')
+        botao.classList.add("desativado");
     }
     else{
-        botao.classList.remove('desativado')
+        botao.classList.remove("desativado");
     }
 }
 //funções idenpendentes
 function pararCronometro(setInterval){
-    clearInterval(setInterval)
+    clearInterval(setInterval);
 }
 
 function formatarDoisCaracteres(tempo){
@@ -102,5 +97,5 @@ function formatarDoisCaracteres(tempo){
 }
 
 function exibirTempoNaTela(elementoTempo, tempo){
-    elementoTempo.textContent = tempo
+    elementoTempo.textContent = tempo;
 }
