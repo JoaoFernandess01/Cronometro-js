@@ -62,6 +62,7 @@ function iniciarCronometro(){
     cronometroRodando = setInterval(() => {
         if(segundos == 59){
             segundos = 0;
+            exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos))
             minutos++
             exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos));
             return;
@@ -71,6 +72,7 @@ function iniciarCronometro(){
         
         if(minutos == 59){
             minutos = 0;
+            exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos))
             horas++;
             exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas));
             return;
