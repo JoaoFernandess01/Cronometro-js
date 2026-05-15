@@ -3,7 +3,6 @@ const btnParar = document.getElementById('btnParar');
 const btnLimpar = document.getElementById('btnLimpar');
 const btnMarcar = document.getElementById('btnMarcar');
 const listaMarcadores = document.getElementById('listaMarcas');
-
 const txtsegundos = document.getElementById('segundos');
 const txtminutos = document.getElementById('minutos');
 const txthoras = document.getElementById('horas');
@@ -14,15 +13,6 @@ let horas = 0;
 let tempoPadraoIntervalo = 1000;
 let cronometroRodando;
 
-function ativaDesativaBotao(botao,estado){
-    botao.disabled = estado;
-    if(estado){
-        botao.classList.add('desativado')
-    }
-    else{
-        botao.classList.remove('desativado')
-    }
-}
 
 ativaDesativaBotao(btnParar,true);
 ativaDesativaBotao(btnLimpar,true);
@@ -36,8 +26,8 @@ btnIniciar.addEventListener("click" , ()=>{
     ativaDesativaBotao(btnParar,false);
     ativaDesativaBotao(btnLimpar,false);
     ativaDesativaBotao(btnMarcar,false);
-
-
+    
+    
 })
 btnParar.addEventListener("click" , ()=>{
     pararCronometro(cronometroRodando);
@@ -47,10 +37,28 @@ btnParar.addEventListener("click" , ()=>{
     
 })
 
+btnLimpar.addEventListener("click", ()=>{
+    limparCronometro(cronometroRodando)
+
+    ativaDesativaBotao(btnIniciar,false)
+    ativaDesativaBotao(btnParar,true);
+    ativaDesativaBotao(btnLimpar,true);
+    ativaDesativaBotao(btnMarcar,true);
+})
+
+function limparCronometro(setInterval){
+    clearInterval(setInterval)
+    segundos = 0;
+    minutos = 0;
+    horas = 0;
+    exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas))
+    exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos))
+    exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos))
+}
 
 
 function iniciarCronometro(){
-     cronometroRodando = setInterval(() => {
+    cronometroRodando = setInterval(() => {
         if(segundos == 59){
             segundos = 0;
             minutos++
@@ -59,7 +67,7 @@ function iniciarCronometro(){
         }
         segundos++
         exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos))
-
+        
         if(minutos == 59){
             minutos = 0;
             horas++
@@ -80,4 +88,14 @@ function formatarDoisCaracteres(tempo){
 
 function exibirTempoNaTela(elementoTempo, tempo){
     elementoTempo.textContent = tempo
+}
+
+function ativaDesativaBotao(botao,estado){
+    botao.disabled = estado;
+    if(estado){
+        botao.classList.add('desativado')
+    }
+    else{
+        botao.classList.remove('desativado')
+    }
 }
