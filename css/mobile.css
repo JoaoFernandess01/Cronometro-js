@@ -1,0 +1,52 @@
+@media screen and (min-width:1440px)and(max-width:1600px){
+    .cronometro{
+        width: 70%;
+    }
+}
+@media screen and (min-width:801px) and (max-width:1439px){
+    .cronometro{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width:800px){
+    .cronometro{
+        width: 95%;
+        flex-direction: column;
+    }
+    .botoes{
+        flex-direction: column;
+        width: 100%;
+    }
+    button{
+    width: 100%;
+    }
+    .conteudoCronometro{
+        width: 100%;
+        border-right: none;
+    }
+    #listaMarcas{
+        width: 100%;
+        border-top-right-radius: 0px;
+        min-height: 150px;
+        
+    }
+    #listaMarcas::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    .tempo{
+        font-size: 60px;
+        text-align: center;
+        height: fit-content;
+        
+    } 
+    .doisPontos{
+        font-size: 65px;
+        margin-inline: -5px;
+    }
+
+    li{
+        font-size: 40px;
+    }
+}

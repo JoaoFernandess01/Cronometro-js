@@ -2,7 +2,7 @@ const btnIniciar = document.getElementById('btnIniciar');
 const btnParar = document.getElementById('btnParar');
 const btnLimpar = document.getElementById('btnLimpar');
 const btnMarcar = document.getElementById('btnMarcar');
-const listaMarcadores = document.getElementById('listaMarcas');
+const listaMarcas = document.getElementById('marcas');
 const txtsegundos = document.getElementById('segundos');
 const txtminutos = document.getElementById('minutos');
 const txthoras = document.getElementById('horas');
@@ -46,16 +46,22 @@ btnLimpar.addEventListener("click", ()=>{
     ativaDesativaBotao(btnMarcar,true);
 })
 
+btnMarcar.addEventListener("click" , marcarTempo);
+
 function limparCronometro(setInterval){
     clearInterval(setInterval)
     segundos = 0;
     minutos = 0;
     horas = 0;
+    listaMarcas.innerHTML = ""
     exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas))
     exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos))
     exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos))
 }
 
+function marcarTempo(){
+    listaMarcas.innerHTML += `<li>${formatarDoisCaracteres(horas)}:${formatarDoisCaracteres(minutos)}:${formatarDoisCaracteres(segundos)}</li>`
+}
 
 function iniciarCronometro(){
     cronometroRodando = setInterval(() => {
@@ -77,7 +83,16 @@ function iniciarCronometro(){
     }, tempoPadraoIntervalo);  
 }
 
-
+function ativaDesativaBotao(botao,estado){
+    botao.disabled = estado;
+    if(estado){
+        botao.classList.add('desativado')
+    }
+    else{
+        botao.classList.remove('desativado')
+    }
+}
+//funções idenpendentes
 function pararCronometro(setInterval){
     clearInterval(setInterval)
 }
@@ -88,14 +103,4 @@ function formatarDoisCaracteres(tempo){
 
 function exibirTempoNaTela(elementoTempo, tempo){
     elementoTempo.textContent = tempo
-}
-
-function ativaDesativaBotao(botao,estado){
-    botao.disabled = estado;
-    if(estado){
-        botao.classList.add('desativado')
-    }
-    else{
-        botao.classList.remove('desativado')
-    }
 }

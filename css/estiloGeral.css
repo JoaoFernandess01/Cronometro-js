@@ -19,6 +19,12 @@
     --fundoRelogio:#4f5152;
     --fundoLista:#c7c7c7;
 }
+/* classlists js */
+.desativado{
+    opacity: 0.4;
+    pointer-events: none;
+}
+
 
 .cronometro{
     width: 50%;
@@ -26,9 +32,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     /* border-left: solid black 2px;
     border-top: solid black 2px;
     border-bottom: solid black 2px; */
@@ -39,7 +43,6 @@
     border-right: solid black 2px;
     width: 80%;
     padding: 40px 20px;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,14 +52,12 @@
 
 .tempos{
     display: flex;  
-    
 }
 
 .doisPontos{
     font-size: 100px;
     font-family: var(--fonteTempo);
-      margin-inline: -15px;
-    
+    margin-inline: -15px;
 }
 
 .tempo{
@@ -87,10 +88,6 @@ button{
     
 }
 
-.desativado{
-     opacity: 0.4;
-    pointer-events: none;
-}
 
 #btnIniciar{
     background-color: var(--Iniciar);
@@ -120,8 +117,7 @@ button{
     padding: 20px;
     overflow-y: auto;
     max-height:290px;
-    
-    
+    scrollbar-gutter:stable ;
 }
 
 /* Barra de scroll da lista */
@@ -139,20 +135,11 @@ button{
 
 ul{
     list-style: none;
+    
 }
 li{
-    font-size: 22px;
+    font-size: 28px;
     font-family: var(--fonteTexto);
     color: white;
     margin-bottom: 5px;
-}
-
-
-
-
-
-@media screen and (max-width:1000px){
-    .cronometro{
-        width: 90%;
-    }
 }
