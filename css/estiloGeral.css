@@ -87,6 +87,11 @@ button{
     
 }
 
+.desativado{
+     opacity: 0.4;
+    pointer-events: none;
+}
+
 #btnIniciar{
     background-color: var(--Iniciar);
 }

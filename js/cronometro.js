@@ -11,34 +11,72 @@ const txthoras = document.getElementById('horas');
 let segundos = 0;
 let minutos = 0;
 let horas = 0;
-let intervalo = 1000;
+let tempoPadraoIntervalo = 10;
 let cronometroRodando;
 
+btnParar.disabled = true;
+btnParar.classList.add('desativado')
+btnLimpar.disabled = true;
+btnLimpar.classList.add('desativado')
+btnMarcar.disabled = true;
+btnMarcar.classList.add('desativado')
+
+btnIniciar.addEventListener("click" , ()=>{
+    iniciarCronometro()
+    btnIniciar.disabled = true;
+    btnIniciar.classList.add('desativado');
+    
+    btnParar.disabled = false;
+    btnParar.classList.remove('desativado')
+
+    btnLimpar.disabled = false;
+    btnLimpar.classList.remove('desativado')
+
+    btnMarcar.disabled = false;
+    btnMarcar.classList.remove('desativado')
+
+})
+btnParar.addEventListener("click" , ()=>{
+    pararCronometro(cronometroRodando)
+    btnParar.disabled = true;
+    btnParar.classList.add('desativado')
+    
+    btnIniciar.classList.remove('desativado')
+    btnIniciar.disabled = false;
+    btnIniciar.textContent = "Continuar"
+})
+
+
+
 function iniciarCronometro(){
-
      cronometroRodando = setInterval(() => {
-        segundos++
-
-        if(segundos == 60){
+        if(segundos == 59){
             segundos = 0;
             minutos++
-            return;
+            exibirTempoNaTela(txtminutos,formatarDoisCaracteres(minutos))
+            return ;
         }
-        if(minutos == 60){
+        segundos++
+        exibirTempoNaTela(txtsegundos,formatarDoisCaracteres(segundos))
+
+        if(minutos == 59){
             minutos = 0;
             horas++
+            exibirTempoNaTela(txthoras,formatarDoisCaracteres(horas))
             return;
         }
-         console.log(`${horas}:${minutos}:${segundos}`);
-
-    }, intervalo);
-
+    }, tempoPadraoIntervalo);  
 }
 
-function pararCronometro(){
-    clearInterval(cronometroRodando)
-    console.log("parou")
+
+function pararCronometro(setInterval){
+    clearInterval(setInterval)
 }
 
-btnIniciar.addEventListener("click" , iniciarCronometro)
-btnParar.addEventListener("click" , pararCronometro)
+function formatarDoisCaracteres(tempo){
+    return tempo < 10 ? `0${tempo}` : tempo;
+}
+
+function exibirTempoNaTela(elementoTempo, tempo){
+    elementoTempo.textContent = tempo
+}
