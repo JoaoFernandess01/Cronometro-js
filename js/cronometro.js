@@ -11,39 +11,40 @@ const txthoras = document.getElementById('horas');
 let segundos = 0;
 let minutos = 0;
 let horas = 0;
-let tempoPadraoIntervalo = 10;
+let tempoPadraoIntervalo = 1000;
 let cronometroRodando;
 
-btnParar.disabled = true;
-btnParar.classList.add('desativado')
-btnLimpar.disabled = true;
-btnLimpar.classList.add('desativado')
-btnMarcar.disabled = true;
-btnMarcar.classList.add('desativado')
+function ativaDesativaBotao(botao,estado){
+    botao.disabled = estado;
+    if(estado){
+        botao.classList.add('desativado')
+    }
+    else{
+        botao.classList.remove('desativado')
+    }
+}
+
+ativaDesativaBotao(btnParar,true);
+ativaDesativaBotao(btnLimpar,true);
+ativaDesativaBotao(btnMarcar,true);
+
 
 btnIniciar.addEventListener("click" , ()=>{
-    iniciarCronometro()
-    btnIniciar.disabled = true;
-    btnIniciar.classList.add('desativado');
+    iniciarCronometro();
     
-    btnParar.disabled = false;
-    btnParar.classList.remove('desativado')
+    ativaDesativaBotao(btnIniciar,true);
+    ativaDesativaBotao(btnParar,false);
+    ativaDesativaBotao(btnLimpar,false);
+    ativaDesativaBotao(btnMarcar,false);
 
-    btnLimpar.disabled = false;
-    btnLimpar.classList.remove('desativado')
-
-    btnMarcar.disabled = false;
-    btnMarcar.classList.remove('desativado')
 
 })
 btnParar.addEventListener("click" , ()=>{
-    pararCronometro(cronometroRodando)
-    btnParar.disabled = true;
-    btnParar.classList.add('desativado')
+    pararCronometro(cronometroRodando);
     
-    btnIniciar.classList.remove('desativado')
-    btnIniciar.disabled = false;
-    btnIniciar.textContent = "Continuar"
+    ativaDesativaBotao(btnParar,true)
+    ativaDesativaBotao(btnIniciar,false)
+    
 })
 
 
