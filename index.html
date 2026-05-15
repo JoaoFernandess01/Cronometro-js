@@ -11,11 +11,11 @@
     <div class="cronometro">
         <div class="conteudoCronometro">
             <div class="tempos">
-                <div id="segundos"></div>
-                <div class="doisPontos"></div>
-                <div id="minutos"></div>
-                <div class="doisPontos"></div>
-                <div id="horas"></div>
+                <div class="tempo" id="segundos">00</div>
+                <span class="doisPontos">:</span>
+                <div class="tempo" id="minutos">00</div>
+                <span class="doisPontos">:</span>
+                <div class="tempo" id="horas">00</div>
             </div>
             <div class="botoes">
                 <button id="btnIniciar">Iniciar</button>
@@ -24,7 +24,14 @@
                 <button id="btnMarcar">Marcar</button>
             </div>
         </div>
-        <div id="listaMarcadores"></div>
+        <div id="listaMarcas">
+            <ul>
+                <li>00:00:00</li>
+                <li>00:00:00</li>
+                <li>00:00:00</li>
+                
+            </ul>
+        </div>
     </div>
     
 

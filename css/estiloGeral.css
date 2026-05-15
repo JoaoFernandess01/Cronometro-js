@@ -1,20 +1,148 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    
    
 }
 
 :root{
     --fonteTempo:  "Google Sans Code", monospace;
-    --fonteTexto:  "Elms Sans", sans-serif;
-    --Iniciar: #88c100;
-    --Parar: #ff003c;
-    --Limpar: #fabe28;
-    --Marcar: #00c176;
-    --fundoRelogio:#3b3c3d;
+    --fonteTexto:  "Poppins", sans-serif;
+    --Iniciar: #27c100;
+    --Parar: #e20d0dea;
+    --Limpar: #f3b313;
+    --Marcar: #2422aa;
+    --fundoRelogio:#4f5152;
     --fundoLista:#c7c7c7;
+}
+
+.cronometro{
+    width: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    border-left: solid black 2px;
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+    border-radius: 10px;
+    display: flex;
+}
+.conteudoCronometro{
+    border-right: solid black 1px;
+    width: 80%;
+    padding: 40px 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.tempos{
+    display: flex;  
+}
+
+.doisPontos{
+    font-size: 100px;
+    font-family: var(--fonteTempo);
+}
+
+.tempo{
+    font-size: 100px;
+    font-family: var(--fonteTempo);
+    background-color: var(--fundoRelogio);
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.botoes{
+    display: flex;
+    gap: 20px;
+    width: 90%;
+}
+
+button{
+    width: calc(25% - 20px);
+    font-size: 20px;
+    font-family: var(--fonteTexto);
+    font-weight: 400;
+    color: white;
+    padding: 10px 20px;
+    border: transparent 1px ;
+    border-radius: 7px;
+    cursor:pointer;
+    
+}
+
+#btnIniciar{
+    background-color: var(--Iniciar);
+}
+
+#btnParar{
+    background-color: var(--Parar);
+}
+
+#btnMarcar{
+    background-color: var(--Marcar);
+}
+
+#btnLimpar{
+    background-color: var(--Limpar);
+}
+
+#listaMarcas{
+    background-color: var(--fundoLista);
+    border-right: solid 2px black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    max-height:290px;
+    
+    
+}
+
+/* Barra de scroll da lista */
+
+ #listaMarcas::-webkit-scrollbar {
+    width: 10px;
+}
+
+#listaMarcas::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+ul{
+    list-style: none;
+}
+li{
+    font-size: 22px;
+    font-family: var(--fonteTexto);
+    color: white;
+    margin-bottom: 5px;
+}
+
+
+
+
+
+@media screen and (max-width:1000px){
+    .cronometro{
+        width: 90%;
+    }
 }
