@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+   
+}
+
+:root{
+    --fonteTempo:  "Google Sans Code", monospace;
+    --fonteTexto:  "Elms Sans", sans-serif;
+    --Iniciar: #88c100;
+    --Parar: #ff003c;
+    --Limpar: #fabe28;
+    --Marcar: #00c176;
+    --fundoRelogio:#3b3c3d;
+    --fundoLista:#c7c7c7;
+}
